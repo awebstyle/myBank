@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Cashier;
+
 class AdminController extends Controller
 {
     public function home(){
@@ -11,7 +13,8 @@ class AdminController extends Controller
     }
 
     public function accounts(){
-        return view('admin.accounts');
+        $cashiers = Cashier::All();
+        return view('admin.accounts')->with('cashiers', $cashiers);
     }
 
     public function addAccount(){

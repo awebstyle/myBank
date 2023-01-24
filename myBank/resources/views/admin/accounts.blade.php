@@ -21,19 +21,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>cashier@cashier.com</td><td>cashier</td><td>cashier</td>
-                <td>
-                  <a href='' class='btn btn-primary btn-sm' data-toggle="modal" data-target="#exampleModalUpdate">Edit</a>
-                  <a href='' class='btn btn-danger btn-sm'>Delete</a>
-                </td>
-              </tr>
-              <tr><td>cashier2@cashier.com</td><td>cashier2</td><td>cashier</td>
-              <td>
-                <a href='' class='btn btn-primary btn-sm' data-toggle="modal" data-target="#exampleModalUpdate">Edit</a>
-                <a href='' class='btn btn-danger btn-sm'>Delete</a>
-              </td>
-              </tr>      
+              @foreach($cashiers as $cahsier)
+                <tr>
+                  <td>{{$cashier->email}}</td>
+                  <td>{{$cashier->password}}</td>
+                  <td>{{$cashier->accounttype}}</td>
+                  <td>
+                    <a href='' class='btn btn-primary btn-sm' data-toggle="modal" data-target="#exampleModalUpdate">Edit</a>
+                    <a href='' class='btn btn-danger btn-sm'>Delete</a>
+                  </td>
+                </tr>
+              @endforeach   
             </tbody>
           </table>
         </div>
