@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CashierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,9 @@ Route::get('client/statements', [ClientController::class, 'statements'])->name('
 Route::get('client/transfer', [ClientController::class, 'transfer'])->name('clienttransfer');
 Route::get('client/notice', [ClientController::class, 'notice'])->name('clientnotice');
 Route::get('client/feedback', [ClientController::class, 'feedback'])->name('clientfeedback');
+
+// Routes vers le cashierCTRL
+
+Route::get('cashier/home', [CashierController::class, 'home'])->name('cashierhome');
+
+
