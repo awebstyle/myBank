@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,11 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+// Routes vers le loginCTRL
+
 Route::get('/', [LoginController::class, 'login'])->name('login');
+
+// Routes vers l'adminCTRL
+
+Route::get('/admin/home', [AdminController::class, 'home'])->name('adminhome');
 
