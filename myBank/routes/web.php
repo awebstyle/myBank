@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,12 @@ Route::get('/admin/showAccount', [AdminController::class, 'showAccount'])->name(
 Route::get('/admin/adminNotice', [AdminController::class, 'adminNotice'])->name('adminnotice');
 Route::delete('/admin/deleteAccount', [AdminController::class, 'deleteAccount'])->name('admindeleteaccount');
 
+
+// Routes vers le clientCTRL
+
+Route::get('client/home', [ClientController::class, 'home'])->name('clienthome');
+Route::get('client/account', [ClientController::class, 'account'])->name('clientaccount');
+Route::get('client/statements', [ClientController::class, 'statements'])->name('clientstatements');
+Route::get('client/transfer', [ClientController::class, 'transfer'])->name('clienttransfer');
+Route::get('client/notice', [ClientController::class, 'notice'])->name('clientnotice');
+Route::get('client/feedback', [ClientController::class, 'feedback'])->name('clientfeedback');
