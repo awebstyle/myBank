@@ -9,11 +9,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
-            <a class="nav-link active" href="{{ route("adminhome") }}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link {{ request()->is('admin/home') ? 'active' : '' }}" href="{{ route("adminhome") }}">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item ">  <a class="nav-link" href="{{ route("adminaccounts") }}">Accounts</a></li>
-          <li class="nav-item ">  <a class="nav-link" href="{{ route("adminaddaccount") }}">Add New Account</a></li>
-          <li class="nav-item ">  <a class="nav-link" href="{{ route("adminfeedback") }}">Feedback</a></li>
+          <li class="nav-item {{ request()->is('admin/accounts') ? 'active' : '' }}">  <a class="nav-link" href="{{ route("adminaccounts") }}">Accounts</a></li>
+          <li class="nav-item {{ request()->is('admin/addAccount') ? 'active' : '' }}">  <a class="nav-link" href="{{ route("adminaddaccount") }}">Add New Account</a></li>
+          <li class="nav-item {{ request()->is('admin/feedback') ? 'active' : '' }}">  <a class="nav-link" href="{{ route("adminfeedback") }}">Feedback</a></li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <button class="btn btn-outline-success">Welcome Manager</button>
