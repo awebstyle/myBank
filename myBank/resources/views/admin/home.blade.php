@@ -25,20 +25,6 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Ali khan</td>
-                    <td>10054777</td>
-                    <td>Dera Ghazi Khan</td>
-                    <td>Rs.16200</td>
-                    <td>Saving</td>
-                    <td>03356910260</td>
-                    <td>
-                    <a href="mshow.html" class='btn btn-success btn-sm' data-toggle='tooltip' title="View More info">View</a>
-                    <a href="mnotice.html" class='btn btn-primary btn-sm' data-toggle='tooltip' title="Send notice to this">Send Notice</a>
-                    <a href="" class='btn btn-danger btn-sm' data-toggle='tooltip' title="Delete this account">Delete</a>
-                    </td>
-                </tr>
-                <tr>
                     <th scope="row">2</th>
                     <td>Fayyaz Khan</td>
                     <td>1513410739</td>
@@ -47,23 +33,9 @@
                     <td>saving</td>
                     <td>03356910260</td>
                     <td>
-                    <a href="mshow.html" class='btn btn-success btn-sm' data-toggle='tooltip' title="View More info">View</a>
-                    <a href="mnotice.html" class='btn btn-primary btn-sm' data-toggle='tooltip' title="Send notice to this">Send Notice</a>
-                    <a href="" class='btn btn-danger btn-sm' data-toggle='tooltip' title="Delete this account">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Fayyaz Khan</td>
-                    <td>1513410837</td>
-                    <td>Dera Ghazi Khan</td>
-                    <td>Rs.12121</td>
-                    <td>current</td>
-                    <td>03356910260</td>
-                    <td>
-                    <a href="mshow.html" class='btn btn-success btn-sm' data-toggle='tooltip' title="View More info">View</a>
-                    <a href="mnotice.html" class='btn btn-primary btn-sm' data-toggle='tooltip' title="Send notice to this">Send Notice</a>
-                    <a href="" class='btn btn-danger btn-sm' data-toggle='tooltip' title="Delete this account">Delete</a>
+                    <a href="{{ route('adminshowaccount') }}" class='btn btn-success btn-sm' data-toggle='tooltip' title="View More info">View</a>
+                    <a href="{{ route('adminnotice') }}" class='btn btn-primary btn-sm' data-toggle='tooltip' title="Send notice to this">Send Notice</a>
+                    <a href="{{ route('admindeleteaccount') }}" class='btn btn-danger btn-sm' data-toggle='tooltip' title="Delete this account">Delete</a>
                     </td>
                 </tr>
                 </tbody>

@@ -21,4 +21,8 @@ class AdminController extends Controller
     public function feedback(){
         return view('admin.feedback');
     }
+
+    public function showAccount(){
+        return view('admin.showAccount');
+    }
 }

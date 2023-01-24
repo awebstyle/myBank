@@ -26,3 +26,7 @@ Route::get('/admin/accounts', [AdminController::class, 'accounts'])->name('admin
 Route::get('/admin/addAccount', [AdminController::class, 'addAccount'])->name('adminaddaccount');
 Route::get('/admin/feedback', [AdminController::class, 'feedback'])->name('adminfeedback');
 
+Route::get('/admin/showAccount', [AdminController::class, 'showAccount'])->name('adminshowaccount');
+Route::get('/admin/adminNotice', [AdminController::class, 'adminNotice'])->name('adminnotice');
+Route::delete('/admin/deleteAccount', [AdminController::class, 'deleteAccount'])->name('admindeleteaccount');
+
