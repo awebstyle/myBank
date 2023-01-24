@@ -45,5 +45,6 @@ Route::get('client/feedback', [ClientController::class, 'feedback'])->name('clie
 // Routes vers le cashierCTRL
 
 Route::get('cashier/home', [CashierController::class, 'home'])->name('cashierhome');
+Route::post('cashier/addCashier', [CashierController::class, 'addCashier'])->name('addcashier');
 
 

@@ -13,7 +13,7 @@ class AdminController extends Controller
     }
 
     public function accounts(){
-        $cashiers = Cashier::All();
+        $cashiers = Cashier::get();
         return view('admin.accounts')->with('cashiers', $cashiers);
     }
 

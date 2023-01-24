@@ -10,21 +10,26 @@
         <div class="card-header">
           All Staff Accounts <button class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#exampleModal">Add New Account</button>
         </div>
+
         <div class="card-body bg-dark text-white">
+          @if(Session::has('status'))
+            <div class="alert alert-success">
+              {{ Session::get('status') }}
+            </div>
+          @endif
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Email</th>
-                <th>Password</th>
                 <th>Account Type</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($cashiers as $cahsier)
+              @foreach($cashiers as $cashier)
                 <tr>
                   <td>{{$cashier->email}}</td>
-                  <td>{{$cashier->password}}</td>
+                 
                   <td>{{$cashier->accounttype}}</td>
                   <td>
                     <a href='' class='btn btn-primary btn-sm' data-toggle="modal" data-target="#exampleModalUpdate">Edit</a>
@@ -52,12 +57,13 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST">
+            <form method="POST" action={{{ route('addcashier')}}}>
+                @csrf
                 <div class="form-group">
                   <input class="form-control w-75 mx-auto" type="email" name="email" required placeholder="Email">
                 </div>
                 <div class="form-group">
-                  <input class="form-control w-75 mx-auto" type="password" name="password" required placeholder="Password">
+                  <input class="form-control w-75 mx-auto" type="password" name="password" required placeholder="Password" minlength="8">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
