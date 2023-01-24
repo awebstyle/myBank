@@ -9,14 +9,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
-            <a class="nav-link active" href="mindex.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="{{ route("adminhome") }}">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item ">  <a class="nav-link" href="maccounts.html">Accounts</a></li>
-          <li class="nav-item ">  <a class="nav-link" href="maddnew.html">Add New Account</a></li>
-          <li class="nav-item ">  <a class="nav-link" href="mfeedback.html">Feedback</a></li>
+          <li class="nav-item ">  <a class="nav-link" href="{{ route("adminaccounts") }}">Accounts</a></li>
+          <li class="nav-item ">  <a class="nav-link" href="{{ route("adminaddaccount") }}">Add New Account</a></li>
+          <li class="nav-item ">  <a class="nav-link" href="{{ route("adminfeedback") }}">Feedback</a></li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success">Welecome Manager</button>
+            <button class="btn btn-outline-success">Welcome Manager</button>
             <a href="" data-toggle="tooltip" title="Logout" class="btn btn-outline-danger mx-1" ><i class="fa fa-sign-out fa-fw"></i></a>    
         </form>    
       </div>

@@ -1,6 +1,6 @@
 @extends('.admin.template.index')
 @section('title')
-    management
+    Managment home
 @endsection
 
 @section('content')

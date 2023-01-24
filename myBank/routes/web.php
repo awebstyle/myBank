@@ -22,4 +22,7 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 // Routes vers l'adminCTRL
 
 Route::get('/admin/home', [AdminController::class, 'home'])->name('adminhome');
+Route::get('/admin/accounts', [AdminController::class, 'accounts'])->name('adminaccounts');
+Route::get('/admin/addAccount', [AdminController::class, 'addAccount'])->name('adminaddaccount');
+Route::get('/admin/feedback', [AdminController::class, 'feedback'])->name('adminfeedback');
 
