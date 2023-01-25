@@ -46,5 +46,7 @@ Route::get('client/feedback', [ClientController::class, 'feedback'])->name('clie
 
 Route::get('cashier/home', [CashierController::class, 'home'])->name('cashierhome');
 Route::post('cashier/addCashier', [CashierController::class, 'addCashier'])->name('addcashier');
+Route::post('cashier/updateCashier/{id}', [CashierController::class, 'updateCashier'])->name('updatecashier');
+Route::delete('cashier/deleteCashier/{id}', [CashierController::class, 'deleteCashier'])->name('deletecashier');
 
 

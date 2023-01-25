@@ -31,9 +31,13 @@
                   <td>{{$cashier->email}}</td>
                  
                   <td>{{$cashier->accounttype}}</td>
-                  <td>
-                    <a href='' class='btn btn-primary btn-sm' data-toggle="modal" data-target="#exampleModalUpdate">Edit</a>
-                    <a href='' class='btn btn-danger btn-sm'>Delete</a>
+                  <td class="d-flex justify-content-around">
+                    <a href='' class='btn btn-primary btn-sm' data-toggle="modal" data-target="#exampleModalUpdate{{$cashier->id}}">Edit</a>
+                    <form style="max-width: 25%;" action="{{route('deletecashier', [$cashier->id])}}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" id="delete" class="btn btn-danger btn-sm" value="">Delete</button>
+                    </form>
                   </td>
                 </tr>
               @endforeach   
@@ -76,31 +80,34 @@
     </div>
 
     <!-- Modal Update -->
-
-    <div class="modal fade" id="exampleModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content bg-dark text-white">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Cashier Account</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form method="POST">
-                <div class="form-group">
-                  <input class="form-control w-75 mx-auto" type="email" name="email" required placeholder="Email">
-                </div>
-                <div class="form-group">
-                  <input class="form-control w-75 mx-auto" type="password" name="password" required placeholder="Password">
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" name="saveAccount" class="btn btn-primary">Update Account</button>
-                </div>
-            </form>
+    @foreach($cashiers as $cashier)
+      <div class="modal fade" id="exampleModalUpdate{{$cashier->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Cashier Account</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="{{ route('updatecashier' , [$cashier->id]) }}">
+                @csrf
+                  <input type="hidden" name="id" id="id" value= {{ $cashier->id }}>
+                  <div class="form-group">
+                    <input class="form-control w-75 mx-auto" type="email" name="email" required placeholder="Email" value="{{ $cashier->email }}">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control w-75 mx-auto" type="password" name="password" required placeholder="Password" value="{{ $cashier->password }}" minlength="8">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="saveAccount" class="btn btn-primary">Update Account</button>
+                  </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    @endforeach
 @endsection
