@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CashierController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,10 @@ Route::get('cashier/home', [CashierController::class, 'home'])->name('cashierhom
 Route::post('cashier/addCashier', [CashierController::class, 'addCashier'])->name('addcashier');
 Route::post('cashier/updateCashier/{id}', [CashierController::class, 'updateCashier'])->name('updatecashier');
 Route::delete('cashier/deleteCashier/{id}', [CashierController::class, 'deleteCashier'])->name('deletecashier');
+
+// Routes vers l'accountCTRL
+
+Route::post('account/addBankAccount', [AccountController::class, 'addBankAccount'])->name('addbankaccount');
+
 
 

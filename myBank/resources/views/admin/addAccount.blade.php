@@ -11,10 +11,30 @@
         New Account 
         </div>
         <div class="card-body bg-dark text-white">
+          @if(count($errors))
+           
+              <div class="alert alert-danger">
+                <ul>
+                   @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                   @endforeach
+                </ul>
+                
+              </div>
+            
+          @endif
+
+          @if(Session::has('status'))
+              <div class="alert alert-success">
+                {{ Session::get('status') }}
+              </div>
+          @endif
+
           <table class="table">
             <tbody>
               <tr>
-                <form method="POST">
+                <form method="POST" action="{{ route('addbankaccount') }}" enctype="multipart/form-data">
+                  @csrf
                   <th>Name</th>
                   <td><input type="text" name="name" class="form-control input-sm" required></td>
                   <th>CNIC</th>
@@ -22,7 +42,7 @@
               </tr>
               <tr>
                   <th>Account Number</th>
-                  <td><input type="" name="accountNo" readonly value="1648479479" class="form-control input-sm" required></td>
+                  <td><input type="" name="accountNumber" readonly value="{{time()}}" class="form-control input-sm" required></td>
                   <th>Account Type</th>
                   <td>
                     <select class="form-control input-sm" name="accountType" required>
@@ -51,7 +71,7 @@
               </tr>
               <tr>
                   <th>Contact Number</th>
-                  <td><input type="number" name="number"  class="form-control input-sm" required></td>
+                  <td><input type="number" name="phone"  class="form-control input-sm" required></td>
                   <th>Photo</th>
                   <td>
                     <input type="file" name="image"  class="form-control input-sm" required>
