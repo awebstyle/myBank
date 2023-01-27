@@ -36,6 +36,8 @@ Route::get('/admin/adminNotice/{id}', [AdminController::class, 'adminNotice'])->
 Route::get('/admin/deleteAccount/{id}', [AdminController::class, 'deleteAccount'])->name('admindeleteaccount');
 Route::post('/admin/sendNotice', [AdminController::class, 'sendNotice'])->name('sendnotice');
 
+Route::get('/admin/deleteClientMessage/{id}', [AdminController::class, 'deleteClientMessage'])->name('deleteclientmessage');
+
 
 // Routes vers le clientCTRL
 

@@ -56,4 +56,10 @@ class AdminController extends Controller
         $notice->save();
         return back()->with('status', 'Notification sent with success');
     }
+
+    public function deleteClientMessage($id){
+        $message = Message::find($id)->first();
+        $message->delete();
+        return back()->with('status', 'Message deleted successfully');
+    }
 }
