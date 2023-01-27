@@ -31,7 +31,7 @@ class AccountController extends Controller
         $bankAccount->address = $request->input('address');
         $bankAccount->password = $request->input('password');
         $bankAccount->source = $request->input('source');
-        $bankAccount->photo = $fileName;
+        $bankAccount->photo = $fileNameToStore;
         $bankAccount->branchName = 'BNP Paribas';
         $bankAccount->branchCode = 11111111345;
 

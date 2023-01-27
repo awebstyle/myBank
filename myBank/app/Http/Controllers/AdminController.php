@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Cashier;
+use App\Models\Account;
 
 class AdminController extends Controller
 {
     public function home(){
-        return view('admin.home');
+        $accounts = Account::All();
+        return view('admin.home')->with('accounts', $accounts);
     }
 
     public function accounts(){
@@ -25,7 +27,8 @@ class AdminController extends Controller
         return view('admin.feedback');
     }
 
-    public function showAccount(){
-        return view('admin.showAccount');
+    public function showAccount($id){
+        $account = Account::find($id);
+        return view('admin.showAccount')->with('account', $account);
     }
 }

@@ -8,7 +8,7 @@
     <div class="container">
       <div class="card w-100 text-center shadowBlue">
         <div class="card-header">
-          Send Notice to Ali khan  
+          Send Notice to {{ $account->name }}  
         </div>
         <div class="card-body">
           <form method="POST">
