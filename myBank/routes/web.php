@@ -45,6 +45,7 @@ Route::get('client/statements', [ClientController::class, 'statements'])->name('
 Route::get('client/transfer', [ClientController::class, 'transfer'])->name('clienttransfer');
 Route::get('client/notice', [ClientController::class, 'notice'])->name('clientnotice');
 Route::get('client/feedback', [ClientController::class, 'feedback'])->name('clientfeedback');
+Route::post('client/sendMessage', [ClientController::class, 'sendMessage'])->name('clientmessage');
 
 // Routes vers le cashierCTRL
 

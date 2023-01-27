@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Notice;
+use App\Models\Message;
 
 class ClientController extends Controller
 {
@@ -35,5 +36,16 @@ class ClientController extends Controller
 
     public function feedback(){
         return view('client.feedback');
+    }
+
+    public function sendMessage(Request $request){
+        $message = new Message();
+        $message->name = Session::get('client')->name;
+        $message->accountNumber = Session::get('client')->accountNumber;
+        $message->phone = Session::get('client')->phone;
+        $message->message = $request->input('message');
+
+        $message->save();
+        return back()->with('status', 'your message has been sent with success');
     }
 }
