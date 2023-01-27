@@ -9,6 +9,11 @@
             <div class="card-header">
             All accounts
             </div>
+            @if(Session::has('status'))
+                <div class="alert alert-success">
+                    {{ Session::get('status') }}
+                </div>
+            @endif
             <div class="card-body">
             <table class="table table-bordered table-sm bg-dark text-white">
                 <thead>
