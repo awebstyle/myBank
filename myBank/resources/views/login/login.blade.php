@@ -23,13 +23,19 @@
           <button class="btn btn-outline-success btn-block">User Login</button>
           </a>
         </h5>
+        @if(Session::has('status'))
+          <div class="alert alert-danger">
+            {{ Session::get('status') }}
+          </div>
+        @endif
       </div>
 
       <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
-        <form method="POST">
-          <input type="email" value="some@gmail.com" name="email" class="form-control" required placeholder="Enter Email">
-          <input type="password" name="password" value="some" class="form-control" required placeholder="Enter Password">
+        <form method="POST" action="{{ route('clientlogin')}}">
+          @csrf
+          <input type="email" name="email" class="form-control" required placeholder="Enter Email">
+          <input type="password" name="password" class="form-control" required placeholder="Enter Password">
           <button type="submit" class="btn btn-primary btn-block btn-sm my-1" name="userLogin">Enter </button>
         </form>
         </div>
@@ -46,8 +52,8 @@
       <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
         <div class="card-body">
           <form method="POST">
-          <input type="email" value="manager@manager.com" name="email" class="form-control" required placeholder="Enter Email">
-          <input type="password" name="password" value="manager" class="form-control" required placeholder="Enter Password">
+          <input type="email"  name="email" class="form-control" required placeholder="Enter Email">
+          <input type="password" name="password" class="form-control" required placeholder="Enter Password">
           <button type="submit" class="btn btn-primary btn-block btn-sm my-1" name="managerLogin">Enter </button>
         </form>
         </div>
@@ -64,8 +70,8 @@
       <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
         <div class="card-body">
           <form method="POST">
-          <input type="email" value="cashier@cashier.com" name="email" class="form-control" required placeholder="Enter Email">
-          <input type="password" name="password" value="cashier" class="form-control" required placeholder="Enter Password">
+          <input type="email" name="email" class="form-control" required placeholder="Enter Email">
+          <input type="password" name="password" class="form-control" required placeholder="Enter Password">
           <button type="submit"  class="btn btn-primary btn-block btn-sm my-1" name="cashierLogin">Enter </button>
         </form>
         </div>
