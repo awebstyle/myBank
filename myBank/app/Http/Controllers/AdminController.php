@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Cashier;
 use App\Models\Account;
+use App\Models\Notice;
+use App\Models\Message;
 
 class AdminController extends Controller
 {
@@ -24,7 +26,8 @@ class AdminController extends Controller
     }
 
     public function feedback(){
-        return view('admin.feedback');
+        $messages = Message::get();
+        return view('admin.feedback')->with('messages', $messages);
     }
 
     public function showAccount($id){
@@ -38,5 +41,19 @@ class AdminController extends Controller
         $account->delete();
 
         return back()->with('status', 'The account has been deleted with success');
+    }
+
+    public function adminNotice($id){
+        $account = Account::find($id);
+        return view('admin.notice')->with('account', $account);
+    }
+
+    public function sendNotice(Request $request){
+        $notice = new Notice();
+        $notice->message = $request->notice;
+        $notice->accountNumber = $request->input('accountNumber');
+
+        $notice->save();
+        return back()->with('status', 'Notification sent with success');
     }
 }

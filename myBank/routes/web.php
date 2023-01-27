@@ -30,8 +30,9 @@ Route::get('/admin/addAccount', [AdminController::class, 'addAccount'])->name('a
 Route::get('/admin/feedback', [AdminController::class, 'feedback'])->name('adminfeedback');
 
 Route::get('/admin/showAccount/{id}', [AdminController::class, 'showAccount'])->name('adminshowaccount');
-Route::get('/admin/adminNotice', [AdminController::class, 'adminNotice'])->name('adminnotice');
+Route::get('/admin/adminNotice/{id}', [AdminController::class, 'adminNotice'])->name('adminnotice');
 Route::get('/admin/deleteAccount/{id}', [AdminController::class, 'deleteAccount'])->name('admindeleteaccount');
+Route::post('/admin/sendNotice', [AdminController::class, 'sendNotice'])->name('sendnotice');
 
 
 // Routes vers le clientCTRL

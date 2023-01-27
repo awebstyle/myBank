@@ -22,15 +22,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Ali khan</td>
-                <td>10054777</td>
-                <td>03356910260</td>
-                <td>This is testing message to admin or manager by fk</td>
-                <td>
-                  <a href="" class='btn btn-danger btn-sm' data-toggle='tooltip' title="Delete this Message">Delete</a>
-                </td> 
-              </tr>
+              @foreach($messages as $message)
+                <tr>
+                  <td>{{ $message->name }}</td>
+                  <td>{{ $message->accountNumber }}</td>
+                  <td>{{ $message->phone }}</td>
+                  <td>{{ $message->message }}</td>
+                  <td>
+                    <a href="" class='btn btn-danger btn-sm' data-toggle='tooltip' title="Delete this Message">Delete</a>
+                  </td> 
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
