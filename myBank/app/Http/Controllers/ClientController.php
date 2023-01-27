@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Notice;
 use App\Models\Message;
+use App\Models\Account;
 
 class ClientController extends Controller
 {
@@ -18,7 +19,8 @@ class ClientController extends Controller
     }
 
     public function account(){
-        return view('client.account');
+        $account = Account::where('accountNumber', Session::get('client')->accountNumber)->first();
+        return view('client.account')->with('account', $account);
     }
 
     public function statements(){
