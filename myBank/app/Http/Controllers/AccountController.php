@@ -29,7 +29,7 @@ class AccountController extends Controller
         $bankAccount->cmic = $request->input('cnic');
         $bankAccount->accountType = $request->input('accountType');
         $bankAccount->address = $request->input('address');
-        $bankAccount->password = $request->input('password');
+        $bankAccount->password = bcrypt($request->input('password'));
         $bankAccount->source = $request->input('source');
         $bankAccount->photo = $fileNameToStore;
         $bankAccount->branchName = 'BNP Paribas';

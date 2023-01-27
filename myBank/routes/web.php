@@ -21,8 +21,9 @@ use App\Http\Controllers\AccountController;
 // Routes vers le loginCTRL
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
-Route::post('/client/clientLogin', [LoginController::class, 'clientLogin'])->name('clientlogin');
-Route::get('/client/clientLogout', [LoginController::class, 'clientLogout'])->name('clientlogout');
+Route::post('/signin', [LoginController::class, 'signin'])->name('signin');
+
+Route::get('/signout', [LoginController::class, 'signout'])->name('signout');
 
 // Routes vers l'adminCTRL
 

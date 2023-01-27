@@ -17,7 +17,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <button class="btn btn-outline-success">Welcome Manager</button>
-            <a href="" data-toggle="tooltip" title="Logout" class="btn btn-outline-danger mx-1" ><i class="fa fa-sign-out fa-fw"></i></a>    
+            <a href="{{ route('signout') }}" data-toggle="tooltip" title="Logout" class="btn btn-outline-danger mx-1" ><i class="fa fa-sign-out fa-fw"></i></a>    
         </form>    
       </div>
     </nav><br><br><br>

@@ -32,7 +32,7 @@
 
       <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
-        <form method="POST" action="{{ route('clientlogin')}}">
+        <form method="POST" action="{{ route('signin')}}">
           @csrf
           <input type="email" name="email" class="form-control" required placeholder="Enter Email">
           <input type="password" name="password" class="form-control" required placeholder="Enter Password">
@@ -41,24 +41,7 @@
         </div>
       </div>
     </div>
-    <div class="card rounded-0">
-      <div class="card-header" role="tab" id="headingTwo">
-        <h5 class="mb-0">
-          <a class="collapsed btn btn-outline-success btn-block" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Manager Login
-          </a>
-        </h5>
-      </div>
-      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-        <div class="card-body">
-          <form method="POST">
-          <input type="email"  name="email" class="form-control" required placeholder="Enter Email">
-          <input type="password" name="password" class="form-control" required placeholder="Enter Password">
-          <button type="submit" class="btn btn-primary btn-block btn-sm my-1" name="managerLogin">Enter </button>
-        </form>
-        </div>
-      </div>
-    </div>
+    
     <div class="card rounded-0">
       <div class="card-header" role="tab" id="headingThree">
         <h5 class="mb-0">
@@ -69,7 +52,8 @@
       </div>
       <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
         <div class="card-body">
-          <form method="POST">
+          <form method="POST" action="{{ route('signin')}}">
+            @csrf
           <input type="email" name="email" class="form-control" required placeholder="Enter Email">
           <input type="password" name="password" class="form-control" required placeholder="Enter Password">
           <button type="submit"  class="btn btn-primary btn-block btn-sm my-1" name="cashierLogin">Enter </button>
