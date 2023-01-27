@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\Notice;
 
 class ClientController extends Controller
 {
@@ -28,7 +29,8 @@ class ClientController extends Controller
     }
 
     public function notice(){
-        return view('client.notice');
+        $notices = Notice::where('accountNumber', Session::get('client')->accountNumber)->get();
+        return view('client.notice')->with('notices', $notices);
     }
 
     public function feedback(){
