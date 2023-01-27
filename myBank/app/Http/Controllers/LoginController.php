@@ -9,7 +9,16 @@ use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
     public function login(){
-        return view('login/login');
+        if(Session::has('client')){
+            return redirect('/client/home');
+        }
+        elseif(Session::has('admin')){
+            echo 'ok';
+        }
+        elseif(Session::has('cashier')){
+            echo 'ok';
+        }
+        else return view('login/login');
     }
 
     public function clientLogin(Request $request){
@@ -28,5 +37,10 @@ class LoginController extends Controller
         else{
             return back()->with('status', 'wrong email or password');
         }
+    }
+
+    public function clientLogout(){
+        Session::forget('client');
+        return redirect('/');
     }
 }
