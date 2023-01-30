@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{{route('signout')}}">
         <img src={{ asset("assets/images/logo.png") }} width="30" height="30" class="d-inline-block align-top" alt="">
         MCB Bank  
       </a>
