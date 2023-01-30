@@ -18,7 +18,7 @@
               Account No.
               <input type="text" value="{{ $account->accountNumber }}" name="accountNumber" class="form-control " readonly="" required="">
               Account Holder Name.
-              <input type="text" class="form-control" value="{{ $account->name }}" readonly="" required="">
+              <input type="text" class="form-control" value="{{ $account->name }}" name="name" readonly="" required="">
               Account Holder Bank Name.
               <input type="text" class="form-control" value="{{ $account->branchName }}" readonly="" required="">
               Enter Amount for tranfer.

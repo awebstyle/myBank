@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Notice;
 use App\Models\Message;
 use App\Models\Account;
+use App\Models\Statement;
 
 class ClientController extends Controller
 {
@@ -68,9 +69,32 @@ class ClientController extends Controller
         $fromAccount = Account::where('accountNumber', Session::get('client')->accountNumber)->first();
         $toAccount = Account::where('accountNumber', $request->input('accountNumber'))->first();
         $fromAccount->balance -= $request->input('amount');
-        $fromAccount->update();
+        
         $toAccount->balance += $request->input('amount');
+        
+
+        $statement = new Statement();
+        $statement->name = $fromAccount->name;
+        $statement->source = $fromAccount->accountNumber;
+        $statement->destination = $toAccount->accountNumber;
+        $statement->amount = $request->input('amount');
+        $statement->status = 1;
+        $statement->save();
+
+        $statement = new Statement();
+        $statement->name = $toAccount->name;
+        $statement->source = $toAccount->accountNumber;
+        $statement->destination = $fromAccount->accountNumber;
+        $statement->amount = $request->input('amount');
+        $statement->status = 2;
+        $statement->save();
+
+        $fromAccount->update();
         $toAccount->update();
+        
+        Session::forget('client');
+        Session::put('client', $fromAccount);
+
         return redirect('/client/home')->with('status', "votre transfert a bien été effectué");
     }
 }
