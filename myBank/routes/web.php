@@ -22,6 +22,8 @@ use App\Http\Controllers\AccountController;
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/signin', [LoginController::class, 'signin'])->name('signin');
+Route::post('/signinAsManager', [LoginController::class, 'signinAsManager'])->name('signinasmanager');
+
 
 Route::get('/signout', [LoginController::class, 'signout'])->name('signout');
 

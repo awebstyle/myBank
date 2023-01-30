@@ -14,6 +14,9 @@ class LoginController extends Controller
         if(Session::has('client')){
             return redirect('/client/home');
         }
+        elseif(Session::has('cashier')){
+            return redirect('/cashier/home');
+        }
         elseif(Session::has('admin')){
             return redirect('/admin/home');
         }
@@ -23,7 +26,9 @@ class LoginController extends Controller
     public function signin(Request $request){
     
         $account = Account::where('email', $request->email)->first();
-        $admin = Cashier::where('email', $request->email)->first();
+        
+        $cashier = Cashier::where('email', $request->email)->first();
+        
 
         if($account){
             if(Hash::check($request->input('password'), $account->password)){
@@ -34,7 +39,26 @@ class LoginController extends Controller
                 return back()->with('status', 'wrong email or password');
             }
         }
-        elseif($admin){
+        elseif($cashier){
+            if(Hash::check($request->input('password'), $cashier->password)){
+                Session::put('cashier', $cashier);
+                return redirect("cashier/home");
+            }
+            else{
+                return back()->with('status', 'wrong email or password');
+            }
+        }
+        else{
+            return back()->with('status', 'wrong email or password');
+        } 
+    }
+
+    public function signinAsManager(Request $request){
+    
+        $admin = Account::where('email', $request->email)->first();
+       
+
+        if($admin){
             if(Hash::check($request->input('password'), $admin->password)){
                 Session::put('admin', $admin);
                 return redirect("admin/home");
@@ -48,9 +72,15 @@ class LoginController extends Controller
         }
     }
 
+
+
+
     public function signout(){
         if(Session::has('client')){
             Session::forget('client');
+        }
+        elseif(Session::has('cashier')){
+            Session::forget('cashier');
         }
         elseif(Session::has('admin')){
             Session::forget('admin');
