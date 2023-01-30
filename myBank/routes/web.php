@@ -61,6 +61,10 @@ Route::get('cashier/home', [CashierController::class, 'home'])->name('cashierhom
 Route::post('cashier/addCashier', [CashierController::class, 'addCashier'])->name('addcashier');
 Route::post('cashier/updateCashier/{id}', [CashierController::class, 'updateCashier'])->name('updatecashier');
 Route::delete('cashier/deleteCashier/{id}', [CashierController::class, 'deleteCashier'])->name('deletecashier');
+Route::post('cashier/cashierTransaction', [CashierController::class, 'cashierTransaction'])->name('cashiertransaction');
+Route::post('cashier/withdraw/{id}', [CashierController::class, 'withdraw'])->name('withdraw');
+Route::post('cashier/deposit/{id}', [CashierController::class, 'deposit'])->name('deposit');
+
 
 // Routes vers l'accountCTRL
 

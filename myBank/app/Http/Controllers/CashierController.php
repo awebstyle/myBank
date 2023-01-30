@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cashier;
+use App\Models\Account;
+use App\Models\Statement;
 
 
 class CashierController extends Controller
@@ -36,5 +38,45 @@ class CashierController extends Controller
         $cashier->delete();
 
         return back()->with('status', 'The cashier account has been deleted with success');
+    }
+
+    public function cashierTransaction(Request $request){
+        $account = Account::where('accountNumber', $request->accountNumber)->first();
+
+        if($account){
+            return view('cashier.transaction')->with('account', $account);
+        }
+        else return back()->with('statusTr', "Ce numéro de compte n'existe pas");
+    }
+
+    public function withdraw(Request $request, $id){
+        $account = Account::where('id', $id)->first();
+        $account->balance -= $request->input('amount');
+        
+        $statement = new Statement();
+        $statement->name = $account->name;
+        $statement->source = 'withdraw';
+        $statement->destination = $account->accountNumber;
+        $statement->amount = $request->input('amount');
+        $statement->status = 3;
+        $statement->save();
+        $account->update();
+
+        return redirect('/cashier/home')->with('status1', 'withdraw made with success');
+    }
+
+    public function deposit(Request $request, $id){
+        $account = Account::where('id', $id)->first();
+        $account->balance += $request->input('amount');
+        $statement = new Statement();
+        $statement->name = $account->name;
+        $statement->source = 'deposit';
+        $statement->destination = $account->accountNumber;
+        $statement->amount = $request->input('amount');
+        $statement->status = 0;
+        $statement->save();
+        $account->update();
+
+        return redirect('/cashier/home')->with('status1',  'deposit made with success');
     }
 }
