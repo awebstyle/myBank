@@ -25,7 +25,8 @@ class ClientController extends Controller
     }
 
     public function statements(){
-        return view('client.statements');
+        $statements = Statement::get();
+        return view('client.statements')->with('statements', $statements);
     }
 
     public function transfer(){

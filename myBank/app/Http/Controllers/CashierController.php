@@ -55,7 +55,7 @@ class CashierController extends Controller
         
         $statement = new Statement();
         $statement->name = $account->name;
-        $statement->source = 'withdraw';
+        $statement->source = $account->accountNumber;
         $statement->destination = $account->accountNumber;
         $statement->amount = $request->input('amount');
         $statement->status = 3;
@@ -70,7 +70,7 @@ class CashierController extends Controller
         $account->balance += $request->input('amount');
         $statement = new Statement();
         $statement->name = $account->name;
-        $statement->source = 'deposit';
+        $statement->source = $account->accountNumber;
         $statement->destination = $account->accountNumber;
         $statement->amount = $request->input('amount');
         $statement->status = 0;

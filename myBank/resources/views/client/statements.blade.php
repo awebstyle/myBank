@@ -11,7 +11,30 @@
           Transaction made against you account
         </div>
         <div class="card-body">
-          <div class='alert alert-secondary'>You withdraw Rs.1012 from your account at 2017-12-17 08:04:58</div><div class='alert alert-success'>You deposit Rs.600 in your account at 2017-12-17 08:04:39</div><div class='alert alert-success'>You deposit Rs.12 in your account at 2017-12-17 07:59:20</div><div class='alert alert-secondary'>You withdraw Rs.12 from your account at 2017-12-17 07:59:02</div><div class='alert alert-success'>You deposit Rs.1200 in your account at 2017-12-17 07:56:29</div>  
+          @foreach($statements as $statement)
+            @if($statement->source == Session::get('client')->accountNumber)
+              @if($statement->status == 0)
+                <div class="alert alert-success">
+                  Dépôt de ${{ $statement->amount }} le {{ $statement->created_at }}
+                </div>
+              
+              @elseif($statement->status == 1)
+                 <div class="alert alert-primary">
+                  Transfert de ${{ $statement->amount }} vers le compte {{ $statement->destination }} le {{ $statement->created_at }}
+                 </div>
+              
+              @elseif($statement->status == 3)
+                <div class="alert alert-warning">
+                  Vous avez retiré ${{ $statement->amount }} le {{ $statement->created_at }}
+                </div>
+              @endif
+            @elseif($statement->destination == Session::get('client')->accountNumber)
+                <div class="div alert alert-success">
+                  Versement de ${{ $statement->amount }} du compte {{ $statement->source }} le {{ $statement->created_at }}
+                </div>
+
+            @endif
+          @endforeach
         </div>
         <div class="card-footer text-muted">
         MCB Bank  
