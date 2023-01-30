@@ -50,4 +50,27 @@ class ClientController extends Controller
         $message->save();
         return back()->with('status', 'your message has been sent with success');
     }
+
+    public function transferFunds(Request $request){
+        $account = Account::where('accountNumber', $request->input('accountNumber'))->first();
+        if($account){
+            if($account->accountNumber != Session::get('client')->accountNumber){
+                return view('client.transferFundsDetails')->with('account', $account);
+            }
+            else return back()->with('status', 'Transaction impossible !  Les comptes débiteur et créditeur sont identiques !');
+        }
+        else {
+            return back()->with('status', "Le compte créditeur n'existe pas");
+        }
+    }
+
+    public function clientTransfer(Request $request){
+        $fromAccount = Account::where('accountNumber', Session::get('client')->accountNumber)->first();
+        $toAccount = Account::where('accountNumber', $request->input('accountNumber'))->first();
+        $fromAccount->balance -= $request->input('amount');
+        $fromAccount->update();
+        $toAccount->balance += $request->input('amount');
+        $toAccount->update();
+        return redirect('/client/home')->with('status', "votre transfert a bien été effectué");
+    }
 }
