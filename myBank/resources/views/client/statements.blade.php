@@ -31,10 +31,11 @@
                 </div>
               @endif
             @elseif($statement->destination == Session::get('client')->accountNumber)
-                <div class="div alert alert-success">
-                  Versement de ${{ $statement->amount }} du compte {{ $statement->source }} le {{ \Carbon\Carbon::parse($statement->created_at)->format('d/m/Y') }}
-                </div>
-
+                @if($statement->status == 2)
+                  <div class="div alert alert-success">
+                    Versement de ${{ $statement->amount }} du compte {{ $statement->source }} le {{ \Carbon\Carbon::parse($statement->created_at)->format('d/m/Y') }}
+                  </div>
+                @endif
             @endif
           @endforeach
         </div>

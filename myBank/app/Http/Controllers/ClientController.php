@@ -84,8 +84,8 @@ class ClientController extends Controller
 
         $statement = new Statement();
         $statement->name = $toAccount->name;
-        $statement->source = $toAccount->accountNumber;
-        $statement->destination = $fromAccount->accountNumber;
+        $statement->source = $fromAccount->accountNumber;
+        $statement->destination = $toAccount->accountNumber;
         $statement->amount = $request->input('amount');
         $statement->status = 2;
         $statement->save();
